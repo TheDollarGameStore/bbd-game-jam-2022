@@ -7,7 +7,8 @@ public enum LuminColor
     BLUE,
     GREEN,
     YELLOW,
-    RED
+    RED,
+    NONE
 }
 
 public class Lumin : MonoBehaviour
@@ -19,5 +20,7 @@ public class Lumin : MonoBehaviour
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+
+        sr.color = Colors.GetColorFromEnum(color);
     }
 }

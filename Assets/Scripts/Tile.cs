@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    [HideInInspector] Lumin lumin;
+    [HideInInspector] public Lumin lumin;
 
     private void Update()
     {

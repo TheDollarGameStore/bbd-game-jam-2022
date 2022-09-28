@@ -381,6 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 1283843928757243407, guid: b26b89487613864478b3dad3aa62466e, type: 3}
+  emitterPrefab: {fileID: 6919546837782207544, guid: b78d472850300b947a0752c7fd20530d, type: 3}
   gridHeight: 8
   gridWidth: 8
   tileSize: 128
