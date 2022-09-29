@@ -5,10 +5,10 @@ using UnityEngine;
 public class Colors
 {
     // Start is called before the first frame update
-    public static Color32 blue = new Color32(77, 166, 255, 255);
-    public static Color32 red = new Color32(235, 86, 75, 255);
-    public static Color32 green = new Color32(143, 222, 93, 255);
-    public static Color32 yellow = new Color32(255, 255, 120, 255);
+    public static Color32 blue = new Color32(18, 18, 255, 255);
+    public static Color32 red = new Color32(255, 35, 203, 255);
+    public static Color32 yellow = new Color32(149, 222, 37, 255);
+    public static Color32 green = new Color32(0, 255, 121, 255);
 
     public static Color32 GetColorFromEnum(LuminColor color)
     {
