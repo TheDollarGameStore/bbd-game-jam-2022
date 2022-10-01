@@ -241,8 +241,9 @@ public class GameManager : MonoBehaviour
         {
             for (int x = 0; x < gridWidth; x++)
             {
-                validMovesLeft = IsValidEmitterPlacement(tiles[y, x], emitter);
+                validMovesLeft = (tiles[y, x].lumin == null || placeEmitterOnLumin) && IsValidEmitterPlacement(tiles[y, x], emitter);
                 if (validMovesLeft) {
+                    //Debug.Log("Valid placement for emitter: " + emitter.upColor + ", " + emitter.leftColor + ", " + emitter.downColor + ", " + emitter.rightColor + ": X-" + x + ", Y-" + y);
                     return;
                 }
             }
