@@ -790,6 +790,7 @@ MonoBehaviour:
   gridHeight: 8
   gridWidth: 8
   tileSize: 128
+  placeEmitterOnLumin: 0
 --- !u!4 &1808882097
 Transform:
   m_ObjectHideFlags: 0

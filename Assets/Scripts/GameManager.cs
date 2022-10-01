@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int tileSize;
 
+    [SerializeField] private bool placeEmitterOnLumin;
+
     private List<GameObject> emitters;
 
     private float tileSpacing;
@@ -95,7 +97,7 @@ public class GameManager : MonoBehaviour
 
     void PlaceEmitter(Tile tile)
     {
-        if (tile.lumin != null)
+        if (tile.lumin != null && !placeEmitterOnLumin)
         {
             return;
         }
