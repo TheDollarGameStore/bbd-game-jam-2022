@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public int levelUnlocked = 1;
-    public AudioClip level1, level2, level3, level4;
-    public AudioSource effectSource, musicSource;
+    public int levelUnlocked;
+    public float musicVolume;
+    public AudioSource audioSourceLevel1, audioSourceLevel2, audioSourceLevel3, audioSourceLevel4;
     public static SoundManager Instance;
 
     public void Awake()
@@ -18,28 +18,31 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        audioSourceLevel1.volume = levelUnlocked >= 1 ? musicVolume : 0f;
+        audioSourceLevel2.volume = levelUnlocked >= 2 ? musicVolume : 0f;
+        audioSourceLevel3.volume = levelUnlocked >= 3 ? musicVolume : 0f;
+        audioSourceLevel4.volume = levelUnlocked >= 4 ? musicVolume : 0f;
     }
 
     public void Update()
     {
-        if (!musicSource.isPlaying)
+        audioSourceLevel1.volume = Mathf.Lerp(audioSourceLevel1.volume, levelUnlocked >= 1 ? musicVolume : 0f, Time.deltaTime);
+        audioSourceLevel2.volume = Mathf.Lerp(audioSourceLevel2.volume, levelUnlocked >= 2 ? musicVolume : 0f, Time.deltaTime);
+        audioSourceLevel3.volume = Mathf.Lerp(audioSourceLevel3.volume, levelUnlocked >= 3 ? musicVolume : 0f, Time.deltaTime);
+        audioSourceLevel4.volume = Mathf.Lerp(audioSourceLevel4.volume, levelUnlocked >= 4 ? musicVolume : 0f, Time.deltaTime);
+    }
+
+    public void LevelUp()
+    {
+        if (levelUnlocked < 4)
+        levelUnlocked++;
+    }
+
+    public void LevelDown()
+    {
+        if (levelUnlocked > 1)
         {
-            if (levelUnlocked >= 1)
-            {
-                musicSource.PlayOneShot(level1);
-            }
-            if (levelUnlocked >= 2)
-            {
-                musicSource.PlayOneShot(level2);
-            }
-            if (levelUnlocked >= 3)
-            {
-                musicSource.PlayOneShot(level3);
-            }
-            if (levelUnlocked >= 4)
-            {
-                musicSource.PlayOneShot(level4);
-            }
+            levelUnlocked--;
         }
     }
 }
