@@ -20,12 +20,23 @@ public class StarsManager : MonoBehaviour
         ps = GetComponent<ParticleSystem>();
         main = ps.main;
         main.simulationSpeed = 0;
-        Invoke("StartZoom", 1.35f);
+        Invoke("StartZoomSound", 1.3f);
+        Invoke("StartZoom", 1.5f);
+        Invoke("ShakeScreen", 2f);
+    }
+
+    void StartZoomSound()
+    {
+        audioSource.Play();
+    }
+
+    void ShakeScreen()
+    {
+        GameManager.instance.cameraBehaviour.Shake(20f);
     }
 
     void StartZoom()
     {
-        audioSource.Play();
         moving = true;
         zooming = true;
         main.simulationSpeed = 10f;

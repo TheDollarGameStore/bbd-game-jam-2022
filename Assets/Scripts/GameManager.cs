@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private bool placeEmitterOnLumin;
 
-    [SerializeField] private CameraBehaviour cameraBehaviour;
+    public CameraBehaviour cameraBehaviour;
 
     [SerializeField] private AudioClip popSound;
 
@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
 
     private bool validMovesLeft;
 
+    private bool introPlaying = true;
+
     private void Awake()
     {
         if (instance == null)
@@ -59,10 +61,11 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        introPlaying = true;
         emitters = new List<GameObject>();
         tileSpacing = tileSize / 8f;
         GenerateGrid();
-        FillEmitters();
+        Invoke("FillEmitters", 2.175f);
         matchedQueue = new Queue<Lumin>();
         GenerateConnectorGrid();
         validMovesLeft = false;
@@ -70,6 +73,7 @@ public class GameManager : MonoBehaviour
 
     void GenerateGrid()
     {
+        int tilesGenerated = 0;
         float totalSize = tileSize + tileSpacing;
 
         tiles = new Tile[gridHeight, gridWidth];
@@ -80,9 +84,11 @@ public class GameManager : MonoBehaviour
             {
                 Vector2 position = new Vector2(-((gridWidth / 2f) * totalSize) + (x * totalSize), -((gridHeight / 2f) * totalSize) + (y * totalSize));
                 Tile newTile = Instantiate(tilePrefab, position, Quaternion.identity).GetComponent<Tile>();
+                newTile.Invoke("Deploy", tilesGenerated / 100f);
                 newTile.x = x;
                 newTile.y = y;
                 tiles[y, x] = newTile;
+                tilesGenerated++;
             }
         }
     }
@@ -128,10 +134,17 @@ public class GameManager : MonoBehaviour
         {
             emitters.Add(Instantiate(emitterPrefab, new Vector2(800f, 1200f), Quaternion.identity));
         }
+
+        introPlaying = false;
     }
 
     private void Update()
     {
+        if (introPlaying)
+        {
+            return;
+        }
+
         ShiftEmitters();
 
         if (Input.GetMouseButtonDown(0))

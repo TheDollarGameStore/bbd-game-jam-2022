@@ -7,15 +7,23 @@ public class CameraBehaviour : MonoBehaviour
     private Vector3 defaultPos;
     private float shakeIntensity;
 
+    private float defaultSize;
+
+    private Camera cameraComponent;
+
     // Start is called before the first frame update
     void Start()
     {
+        cameraComponent = GetComponent<Camera>();
+        defaultSize = cameraComponent.orthographicSize;
+        cameraComponent.orthographicSize *= 0.5f;
         defaultPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        cameraComponent.orthographicSize = Mathf.Lerp(cameraComponent.orthographicSize, defaultSize, 3f * Time.deltaTime);
         transform.position = Vector3.Lerp(transform.position, defaultPos, 10f * Time.deltaTime);
 
         shakeIntensity -= 30f * Time.deltaTime;
