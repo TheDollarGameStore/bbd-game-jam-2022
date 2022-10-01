@@ -145,6 +145,7 @@ public class Emitter : MonoBehaviour
         GameManager.instance.tiles[y, x].lumin = newLumin;
         newLumin.x = x;
         newLumin.y = y;
+        GameManager.instance.tiles[y, x].UpdateConnectors();
         Queue<Lumin> lumins = new Queue<Lumin>();
         newLumin.CheckNeighbours(lumins);
 

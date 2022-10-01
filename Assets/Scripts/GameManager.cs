@@ -10,9 +10,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public int minimumMatch;
 
+    [HideInInspector] public Connector[,] verticalConnectors;
+
+    [HideInInspector] public Connector[,] horizontalConnectors;
+
+
     [SerializeField] private GameObject tilePrefab;
 
     [SerializeField] private GameObject emitterPrefab;
+
+    [SerializeField] private GameObject connectorPrefab;
 
     [SerializeField] private int gridHeight;
 
@@ -48,10 +55,10 @@ public class GameManager : MonoBehaviour
         GenerateGrid();
         FillEmitters();
         matchedQueue = new Queue<Lumin>();
+        GenerateConnectorGrid();
         validMovesLeft = false;
     }
 
-    // Update is called once per frame
     void GenerateGrid()
     {
         float totalSize = tileSize + tileSpacing;
@@ -71,11 +78,46 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void GenerateConnectorGrid()
+    {
+        float totalSize = tileSize + tileSpacing;
+        verticalConnectors = new Connector[gridHeight - 1, gridWidth];
+        for (int y = 0; y < gridHeight - 1; y++)
+        {
+            for (int x = 0; x < gridWidth; x++)
+            {
+                Vector2 position = new Vector2(-((gridWidth / 2f) * totalSize) + (x * totalSize), -((gridHeight / 2f) * totalSize) + (y * totalSize) + (totalSize / 2f));
+                Connector newConnector = Instantiate(connectorPrefab, position, Quaternion.identity).GetComponent<Connector>();
+                newConnector.transform.Rotate(new Vector3(0, 0, 90));
+                newConnector.tiles.Add(tiles[y, x]);
+                newConnector.tiles.Add(tiles[y + 1, x]);
+                tiles[y, x].connectors.Add(newConnector);
+                tiles[y + 1, x].connectors.Add(newConnector);
+                verticalConnectors[y, x] = newConnector;
+            }
+        }
+
+        horizontalConnectors = new Connector[gridHeight, gridWidth - 1];
+        for (int y = 0; y < gridHeight; y++)
+        {
+            for (int x = 0; x < gridWidth - 1; x++)
+            {
+                Vector2 position = new Vector2(-((gridWidth / 2f) * totalSize) + (x * totalSize) + (totalSize / 2f), -((gridHeight / 2f) * totalSize) + (y * totalSize));
+                Connector newConnector = Instantiate(connectorPrefab, position, Quaternion.identity).GetComponent<Connector>();
+                newConnector.tiles.Add(tiles[y, x]);
+                newConnector.tiles.Add(tiles[y, x + 1]);
+                tiles[y, x].connectors.Add(newConnector);
+                tiles[y, x + 1].connectors.Add(newConnector);
+                horizontalConnectors[y, x] = newConnector;
+            }
+        }
+    }
+
     void FillEmitters()
     {
         while (emitters.Count < 5)
         {
-            emitters.Add(Instantiate(emitterPrefab,  new Vector2(800f, 1200f), Quaternion.identity));
+            emitters.Add(Instantiate(emitterPrefab, new Vector2(800f, 1200f), Quaternion.identity));
         }
     }
 
