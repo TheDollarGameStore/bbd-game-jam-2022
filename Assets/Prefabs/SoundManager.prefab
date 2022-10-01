@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelUnlocked: 1
-  musicVolume: 1
+  musicVolume: 0.3
   audioSourceLevel1: {fileID: 2186313315162609004}
   audioSourceLevel2: {fileID: 2186313315109582242}
   audioSourceLevel3: {fileID: 2186313315545679636}

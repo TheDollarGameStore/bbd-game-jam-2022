@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Emitter : MonoBehaviour
 {
-    [HideInInspector] public LuminColor upColor;
-    [HideInInspector] public LuminColor downColor;
-    [HideInInspector] public LuminColor rightColor;
-    [HideInInspector] public LuminColor leftColor;
+    [HideInInspector] public LuminColor upColor = LuminColor.NONE;
+    [HideInInspector] public LuminColor downColor = LuminColor.NONE;
+    [HideInInspector] public LuminColor rightColor = LuminColor.NONE;
+    [HideInInspector] public LuminColor leftColor = LuminColor.NONE;
 
     [SerializeField] private GameObject blueLuminPrefab;
     [SerializeField] private GameObject redLuminPrefab;
@@ -17,6 +17,8 @@ public class Emitter : MonoBehaviour
     [SerializeField] private GameObject emitterDiodePrefab;
 
     [SerializeField] private AudioClip placeSound;
+
+    private bool shrinking = false;
 
     private Wobble wobbler;
 
@@ -30,15 +32,34 @@ public class Emitter : MonoBehaviour
     // Update is called once per frame
     void PickColors()
     {
-        upColor = (LuminColor)Random.Range(0, 5);
-        downColor = (LuminColor)Random.Range(0, 5);
-        rightColor = (LuminColor)Random.Range(0, 5);
-        leftColor = (LuminColor)Random.Range(0, 5);
+        
+        upColor = PickColor();
+        downColor = PickColor();
+        rightColor = PickColor();
+        leftColor = PickColor();
 
-        AddDiode(upColor, 0f);
-        AddDiode(rightColor, 270f);
-        AddDiode(downColor, 180f);
-        AddDiode(leftColor, 90f);
+        //Ensure that not all diodes are empty
+        if (upColor == LuminColor.NONE && downColor == LuminColor.NONE && leftColor == LuminColor.NONE && rightColor == LuminColor.NONE)
+        {
+            PickColors();
+        }
+        else
+        {
+            AddDiode(upColor, 0f);
+            AddDiode(rightColor, 270f);
+            AddDiode(downColor, 180f);
+            AddDiode(leftColor, 90f);
+        }
+    }
+
+    LuminColor PickColor()
+    {
+        if (Random.Range(0, 2) == 0)
+        {
+            return (LuminColor)Random.Range(0, 4);
+        }
+
+        return LuminColor.NONE;
     }
 
     void AddDiode(LuminColor color, float angle)
@@ -57,12 +78,25 @@ public class Emitter : MonoBehaviour
         LaunchLumins(y, x);
         Invoke("Wobble", 0.01f);
         SoundManager.Instance.PlayRandomized(placeSound);
-        Invoke("DestroySelf", 1f);
+        Invoke("Shrink", 1f);
     }
 
     private void Wobble()
     {
         wobbler.DoTheWobble();
+    }
+
+    private void Update()
+    {
+        if (shrinking)
+        {
+            transform.localScale -= Vector3.one * (10f * Time.deltaTime);
+
+            if (transform.localScale.x <= 0f)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     private void LaunchLumins(int y, int x)
@@ -111,8 +145,9 @@ public class Emitter : MonoBehaviour
         GameManager.instance.tiles[y, x].lumin = newLumin;
     }
 
-    void DestroySelf()
+    void Shrink()
     {
-        Destroy(gameObject);
+        Destroy(wobbler);
+        shrinking = true;
     }
 }
