@@ -855,7 +855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45ec72646928345abbf57c3feaee3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumMatch: 0
+  minimumMatch: 3
   tilePrefab: {fileID: 1283843928757243407, guid: b26b89487613864478b3dad3aa62466e, type: 3}
   emitterPrefab: {fileID: 6919546837782207544, guid: b78d472850300b947a0752c7fd20530d, type: 3}
   connectorPrefab: {fileID: 577355052815432178, guid: f81abed0678224a9ca01d51c0691b3b9, type: 3}
