@@ -4,7 +4,7 @@ public class SoundManager : MonoBehaviour
 {
     public int levelUnlocked;
     public float musicVolume;
-    public AudioSource audioSourceLevel1, audioSourceLevel2, audioSourceLevel3, audioSourceLevel4;
+    public AudioSource audioSourceLevel1, audioSourceLevel2, audioSourceLevel3, audioSourceLevel4, soundSource;
     public static SoundManager Instance;
 
     public void Awake()
@@ -44,5 +44,11 @@ public class SoundManager : MonoBehaviour
         {
             levelUnlocked--;
         }
+    }
+
+    public void PlayRandomized(AudioClip clip)
+    {
+        soundSource.pitch = Random.Range(0.9f, 1.1f);
+        soundSource.PlayOneShot(clip);
     }
 }

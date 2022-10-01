@@ -107,6 +107,7 @@ MonoBehaviour:
   yellowLuminPrefab: {fileID: 2214370185660298155, guid: 90f9c7b8518c505469426a1fbde3b9ae, type: 3}
   greenLuminPrefab: {fileID: 2214370185660298155, guid: c1a336990ff2dae44b3d806724fc3996, type: 3}
   emitterDiodePrefab: {fileID: 2756896011981491020, guid: 5bc739e1bdd88344dbd44d6e94e5e832, type: 3}
+  placeSound: {fileID: 8300000, guid: 6329db0a14fac7f43bba98b94f35b7ab, type: 3}
 --- !u!114 &644640679323695753
 MonoBehaviour:
   m_ObjectHideFlags: 0

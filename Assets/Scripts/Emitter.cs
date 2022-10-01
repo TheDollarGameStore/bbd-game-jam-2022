@@ -16,6 +16,8 @@ public class Emitter : MonoBehaviour
 
     [SerializeField] private GameObject emitterDiodePrefab;
 
+    [SerializeField] private AudioClip placeSound;
+
     private Wobble wobbler;
 
     // Start is called before the first frame update
@@ -54,6 +56,7 @@ public class Emitter : MonoBehaviour
     {
         LaunchLumins(y, x);
         Invoke("Wobble", 0.01f);
+        SoundManager.Instance.PlayRandomized(placeSound);
         Invoke("DestroySelf", 1f);
     }
 
