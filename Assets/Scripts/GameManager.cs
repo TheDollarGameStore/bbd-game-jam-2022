@@ -51,7 +51,10 @@ public class GameManager : MonoBehaviour
             for (int x = 0; x < gridWidth; x++)
             {
                 Vector2 position = new Vector2(-((gridWidth / 2f) * totalSize) + (x * totalSize), -((gridHeight / 2f) * totalSize) + (y * totalSize));
-                tiles[y, x] = Instantiate(tilePrefab, position, Quaternion.identity).GetComponent<Tile>();
+                Tile newTile = Instantiate(tilePrefab, position, Quaternion.identity).GetComponent<Tile>();
+                newTile.x = x;
+                newTile.y = y;
+                tiles[y, x] = newTile;
             }
         }
     }
@@ -97,10 +100,55 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        GameObject placedPiece = emitters[0];
-        emitters.RemoveAt(0);
-        placedPiece.transform.position = tile.transform.position;
-        placedPiece.transform.localScale = Vector3.one;
-        FillEmitters();
+        if (IsValidEmitterPlacement(tile, emitters[0].GetComponent<Emitter>()))
+        {
+            GameObject placedPiece = emitters[0];
+            emitters.RemoveAt(0);
+            placedPiece.transform.position = tile.transform.position;
+            placedPiece.GetComponent<Emitter>().Placed(tile.y, tile.x);
+            placedPiece.transform.localScale = Vector3.one;
+            FillEmitters();
+        }
+
+    }
+
+    private bool IsTileFree(int y, int x)
+    {
+        if (y < 0 || y > gridHeight - 1 || x < 0 || x > gridWidth - 1)
+        {
+            return false;
+        }
+
+        if (tiles[y, x].lumin != null)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private bool IsValidEmitterPlacement(Tile tile, Emitter emitter)
+    {
+        if (emitter.upColor != LuminColor.NONE && !IsTileFree(tile.y + 1, tile.x))
+        {
+            return false;
+        }
+
+        if (emitter.downColor != LuminColor.NONE && !IsTileFree(tile.y - 1, tile.x))
+        {
+            return false;
+        }
+
+        if (emitter.leftColor != LuminColor.NONE && !IsTileFree(tile.y, tile.x - 1))
+        {
+            return false;
+        }
+
+        if (emitter.rightColor != LuminColor.NONE && !IsTileFree(tile.y, tile.x + 1))
+        {
+            return false;
+        }
+
+        return true;
     }
 }

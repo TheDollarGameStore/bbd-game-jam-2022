@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6919546837782207549}
   m_Layer: 0
   m_Name: Emitter
-  m_TagString: Untagged
+  m_TagString: Emitter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,4 +97,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c92d8379324e54ea5f6b23597cdf37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upColor: 0
+  downColor: 0
+  rightColor: 0
+  leftColor: 0
+  blueLuminPrefab: {fileID: 2214370185660298155, guid: eadd05ff745897a4e95c950189108d90, type: 3}
+  redLuminPrefab: {fileID: 2214370185660298155, guid: 938147c5539588e4cb63fe7b17162720, type: 3}
+  yellowLuminPrefab: {fileID: 2214370185660298155, guid: 90f9c7b8518c505469426a1fbde3b9ae, type: 3}
+  greenLuminPrefab: {fileID: 2214370185660298155, guid: c1a336990ff2dae44b3d806724fc3996, type: 3}
   emitterDiodePrefab: {fileID: 2756896011981491020, guid: 5bc739e1bdd88344dbd44d6e94e5e832, type: 3}

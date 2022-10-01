@@ -5,6 +5,8 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     [HideInInspector] public Lumin lumin;
+    [HideInInspector] public int y;
+    [HideInInspector] public int x;
 
     private void Update()
     {
