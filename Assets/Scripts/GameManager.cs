@@ -223,7 +223,7 @@ public class GameManager : MonoBehaviour
     {
         if (matchedQueue.Count != 0)
         {
-            SoundManager.Instance.PlayPitched(popSound, 0.5f + (matchedQueue.Count * 0.1f));
+            SoundManager.Instance.PlayPitched(popSound, Mathf.Min(0.5f + (matchedQueue.Count * 0.1f), 1.5f));
             cameraBehaviour.Shake(10f + matchedQueue.Count);
             score += matchedQueue.Count * 100; //TODO: make exponential
             while (matchedQueue.Count > 0)
