@@ -143,6 +143,16 @@ public class Emitter : MonoBehaviour
         }
 
         GameManager.instance.tiles[y, x].lumin = newLumin;
+        newLumin.x = x;
+        newLumin.y = y;
+        Queue<Lumin> lumins = new Queue<Lumin>();
+        newLumin.CheckNeighbours(lumins);
+
+        if (lumins.Count >= GameManager.instance.minimumMatch) {
+            while (lumins.Count > 0) {
+                GameManager.instance.matchedQueue.Enqueue(lumins.Dequeue());
+            }
+        }
     }
 
     void Shrink()

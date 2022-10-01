@@ -6,6 +6,10 @@ public class GameManager : MonoBehaviour
 {
     [HideInInspector] public Tile[,] tiles;
 
+    [HideInInspector] public Queue<Lumin> matchedQueue;
+
+    [SerializeField] public int minimumMatch;
+
     [SerializeField] private GameObject tilePrefab;
 
     [SerializeField] private GameObject emitterPrefab;
@@ -41,6 +45,7 @@ public class GameManager : MonoBehaviour
         tileSpacing = tileSize / 8f;
         GenerateGrid();
         FillEmitters();
+        matchedQueue = new Queue<Lumin>();
     }
 
     // Update is called once per frame
@@ -113,6 +118,8 @@ public class GameManager : MonoBehaviour
             placedPiece.transform.localScale = Vector3.one;
             FillEmitters();
             cameraBehaviour.Nudge();
+
+            PopLumins();
         }
 
     }
@@ -155,5 +162,15 @@ public class GameManager : MonoBehaviour
         }
 
         return true;
+    }
+
+    private void PopLumins()
+    {
+        while (matchedQueue.Count > 0)
+        {
+            Lumin lumin = matchedQueue.Dequeue();
+            lumin.Pop();
+        }
+        matchedQueue.Clear();
     }
 }
