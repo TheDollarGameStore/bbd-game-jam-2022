@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance = null;
 
+    [SerializeField] private CameraBehaviour cameraBehaviour;
+
     private void Awake()
     {
         if (instance == null)
@@ -110,6 +112,7 @@ public class GameManager : MonoBehaviour
             placedPiece.GetComponent<Emitter>().Placed(tile.y, tile.x);
             placedPiece.transform.localScale = Vector3.one;
             FillEmitters();
+            cameraBehaviour.Nudge();
         }
 
     }

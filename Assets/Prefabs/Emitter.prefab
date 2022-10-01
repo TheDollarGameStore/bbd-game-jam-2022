@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6919546837782207550}
   - component: {fileID: 6919546837782207551}
   - component: {fileID: 6919546837782207549}
+  - component: {fileID: 644640679323695753}
   m_Layer: 0
   m_Name: Emitter
   m_TagString: Emitter
@@ -106,3 +107,18 @@ MonoBehaviour:
   yellowLuminPrefab: {fileID: 2214370185660298155, guid: 90f9c7b8518c505469426a1fbde3b9ae, type: 3}
   greenLuminPrefab: {fileID: 2214370185660298155, guid: c1a336990ff2dae44b3d806724fc3996, type: 3}
   emitterDiodePrefab: {fileID: 2756896011981491020, guid: 5bc739e1bdd88344dbd44d6e94e5e832, type: 3}
+--- !u!114 &644640679323695753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6919546837782207544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 122f9f5eab709414eb3ed5caacb4a510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.2
+  settleSpeed: 0.0075
+  wobbleFrequency: 6

@@ -16,9 +16,12 @@ public class Emitter : MonoBehaviour
 
     [SerializeField] private GameObject emitterDiodePrefab;
 
+    private Wobble wobbler;
+
     // Start is called before the first frame update
     void Start()
     {
+        wobbler = GetComponent<Wobble>();
         PickColors();
     }
 
@@ -50,7 +53,13 @@ public class Emitter : MonoBehaviour
     public void Placed(int y, int x)
     {
         LaunchLumins(y, x);
+        Invoke("Wobble", 0.01f);
         Invoke("DestroySelf", 1f);
+    }
+
+    private void Wobble()
+    {
+        wobbler.DoTheWobble();
     }
 
     private void LaunchLumins(int y, int x)
