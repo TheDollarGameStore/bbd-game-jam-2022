@@ -99,6 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
+  x: 0
+  y: 0
+  popEffectPrefab: {fileID: 2214370185660298155, guid: 68dc980156acabb4b8aff87ce7f6b587, type: 3}
 --- !u!1001 &2936906878472875660
 PrefabInstance:
   m_ObjectHideFlags: 0

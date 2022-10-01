@@ -15,8 +15,10 @@ public enum LuminColor
 public class Lumin : MonoBehaviour
 {
     public LuminColor color;
-    public int x;
-    public int y;
+    [HideInInspector] public int x;
+    [HideInInspector] public int y;
+
+    [SerializeField] private GameObject popEffectPrefab;
 
     private SpriteRenderer sr;
 
@@ -65,6 +67,7 @@ public class Lumin : MonoBehaviour
     public void Pop()
     {
         GameManager.instance.tiles[y, x].lumin = null;
+        Instantiate(popEffectPrefab, GameManager.instance.tiles[y, x].transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
