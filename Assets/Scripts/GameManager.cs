@@ -22,13 +22,15 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private bool placeEmitterOnLumin;
 
+    [SerializeField] private CameraBehaviour cameraBehaviour;
+
     private List<GameObject> emitters;
 
     private float tileSpacing;
 
     public static GameManager instance = null;
 
-    [SerializeField] private CameraBehaviour cameraBehaviour;
+    private bool validMovesLeft;
 
     private void Awake()
     {
@@ -46,6 +48,7 @@ public class GameManager : MonoBehaviour
         GenerateGrid();
         FillEmitters();
         matchedQueue = new Queue<Lumin>();
+        validMovesLeft = false;
     }
 
     // Update is called once per frame
@@ -120,6 +123,7 @@ public class GameManager : MonoBehaviour
             cameraBehaviour.Nudge();
 
             PopLumins();
+            CheckForValidMoves(emitters[0].GetComponent<Emitter>());
         }
 
     }
@@ -172,5 +176,19 @@ public class GameManager : MonoBehaviour
             lumin.Pop();
         }
         matchedQueue.Clear();
+    }
+
+    private void CheckForValidMoves(Emitter emitter)
+    {
+        for (int y = 0; y < gridHeight; y++)
+        {
+            for (int x = 0; x < gridWidth; x++)
+            {
+                validMovesLeft = IsValidEmitterPlacement(GameManager.instance.tiles[y, x], emitter);
+                if (validMovesLeft) {
+                    return;
+                }
+            }
+        }
     }
 }
