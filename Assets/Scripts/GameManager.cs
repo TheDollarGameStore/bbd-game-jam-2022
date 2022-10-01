@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -32,6 +33,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CameraBehaviour cameraBehaviour;
 
     [SerializeField] private AudioClip popSound;
+
+    [SerializeField] private Text scoreText;
+
+    private int score;
+
+    private int displayScore;
 
     private List<GameObject> emitters;
 
@@ -217,7 +224,8 @@ public class GameManager : MonoBehaviour
         if (matchedQueue.Count != 0)
         {
             SoundManager.Instance.PlayPitched(popSound, 0.5f + (matchedQueue.Count * 0.1f));
-            cameraBehaviour.Shake(15f);
+            cameraBehaviour.Shake(10f + matchedQueue.Count);
+            score += matchedQueue.Count * 100; //TODO: make exponential
             while (matchedQueue.Count > 0)
             {
                 Lumin lumin = matchedQueue.Dequeue();
@@ -239,5 +247,26 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
+        if (displayScore != score)
+        {
+            if (score - displayScore > 500)
+            {
+                displayScore += 100;
+            }
+            else if (score - displayScore > 50)
+            {
+                displayScore += 10;
+            }
+            else
+            {
+                displayScore += 1;
+            }
+        }
+
+        scoreText.text = displayScore.ToString();
     }
 }
