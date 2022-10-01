@@ -241,12 +241,15 @@ public class GameManager : MonoBehaviour
         {
             for (int x = 0; x < gridWidth; x++)
             {
-                validMovesLeft = IsValidEmitterPlacement(GameManager.instance.tiles[y, x], emitter);
+                validMovesLeft = IsValidEmitterPlacement(tiles[y, x], emitter);
                 if (validMovesLeft) {
                     return;
                 }
             }
         }
+
+        //If it reaches here, it means game over
+        Debug.Log("You Lose");
     }
 
     private void FixedUpdate()
