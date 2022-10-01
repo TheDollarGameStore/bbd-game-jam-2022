@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private CameraBehaviour cameraBehaviour;
 
+    [SerializeField] private AudioClip popSound;
+
     private List<GameObject> emitters;
 
     private float tileSpacing;
@@ -212,12 +214,17 @@ public class GameManager : MonoBehaviour
 
     private void PopLumins()
     {
-        while (matchedQueue.Count > 0)
+        if (matchedQueue.Count != 0)
         {
-            Lumin lumin = matchedQueue.Dequeue();
-            lumin.Pop();
+            SoundManager.Instance.PlayPitched(popSound, 0.5f + (matchedQueue.Count * 0.1f));
+            cameraBehaviour.Shake(15f);
+            while (matchedQueue.Count > 0)
+            {
+                Lumin lumin = matchedQueue.Dequeue();
+                lumin.Pop();
+            }
+            matchedQueue.Clear();
         }
-        matchedQueue.Clear();
     }
 
     private void CheckForValidMoves(Emitter emitter)

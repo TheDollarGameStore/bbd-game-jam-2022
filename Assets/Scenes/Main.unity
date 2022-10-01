@@ -862,8 +862,9 @@ MonoBehaviour:
   gridHeight: 8
   gridWidth: 8
   tileSize: 128
-  placeEmitterOnLumin: 0
+  placeEmitterOnLumin: 1
   cameraBehaviour: {fileID: 519420033}
+  popSound: {fileID: 8300000, guid: 17afdd71e70dc304bab1e25327b4b5bb, type: 3}
 --- !u!4 &1808882097
 Transform:
   m_ObjectHideFlags: 0

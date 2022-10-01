@@ -51,4 +51,10 @@ public class SoundManager : MonoBehaviour
         soundSource.pitch = Random.Range(0.9f, 1.1f);
         soundSource.PlayOneShot(clip);
     }
+
+    public void PlayPitched(AudioClip clip, float pitch)
+    {
+        soundSource.pitch = pitch;
+        soundSource.PlayOneShot(clip);
+    }
 }
