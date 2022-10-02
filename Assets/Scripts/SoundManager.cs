@@ -32,20 +32,6 @@ public class SoundManager : MonoBehaviour
         audioSourceLevel4.volume = Mathf.Lerp(audioSourceLevel4.volume, levelUnlocked >= 4 ? musicVolume : 0f, Time.deltaTime);
     }
 
-    public void LevelUp()
-    {
-        if (levelUnlocked < 4)
-        levelUnlocked++;
-    }
-
-    public void LevelDown()
-    {
-        if (levelUnlocked > 1)
-        {
-            levelUnlocked--;
-        }
-    }
-
     public void PlayRandomized(AudioClip clip)
     {
         soundSource.pitch = Random.Range(0.9f, 1.1f);
