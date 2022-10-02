@@ -12,14 +12,4 @@ public class Menu : MonoBehaviour
     {
         Application.Quit();
     }
-
-    public void DecrementLevelUnlocked()
-    {
-        SoundManager.Instance.levelUnlocked--;
-    }
-
-    public void IncrementLevelUnlocked()
-    {
-        SoundManager.Instance.levelUnlocked++;
-    }
 }

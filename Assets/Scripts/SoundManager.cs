@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public int levelUnlocked;
+    [HideInInspector] public int levelUnlocked;
     public float musicVolume;
     public AudioSource audioSourceLevel1, audioSourceLevel2, audioSourceLevel3, audioSourceLevel4, soundSource;
     public static SoundManager Instance;

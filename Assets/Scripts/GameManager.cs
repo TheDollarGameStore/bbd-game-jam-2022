@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public Connector[,] horizontalConnectors;
 
-
     [SerializeField] private GameObject tilePrefab;
 
     [SerializeField] private GameObject emitterPrefab;
@@ -50,6 +49,14 @@ public class GameManager : MonoBehaviour
 
     private bool introPlaying = true;
 
+    [HideInInspector] public int levelUnlocked;
+
+    private readonly int[] scoreNeededToClearLevel = { 1000, 2000, 3000, 4000, 100000 };
+
+    public StarsManager starsManager;
+
+    [SerializeField] private Text levelText;
+
     private void Awake()
     {
         if (instance == null)
@@ -61,6 +68,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        levelUnlocked = 1;
+        SoundManager.Instance.levelUnlocked = levelUnlocked;
         introPlaying = true;
         emitters = new List<GameObject>();
         tileSpacing = tileSize / 8f;
@@ -188,6 +197,7 @@ public class GameManager : MonoBehaviour
 
             PopLumins();
             CheckForValidMoves(emitters[0].GetComponent<Emitter>());
+            CheckForScoreReached();
         }
 
     }
@@ -266,6 +276,28 @@ public class GameManager : MonoBehaviour
         Debug.Log("You Lose");
     }
 
+    private void CheckForScoreReached()
+    {
+        if (score >= scoreNeededToClearLevel[levelUnlocked - 1])
+        {
+            for (int y = 0; y < gridHeight; y++)
+            {
+                for (int x = 0; x < gridWidth; x++)
+                {
+                    if (tiles[y, x].lumin != null)
+                    {
+                        tiles[y, x].lumin.Pop();
+                    }
+                }
+            }
+            score = 0;
+            levelUnlocked++;
+            SoundManager.Instance.levelUnlocked = levelUnlocked;
+            displayScore = 0;
+            starsManager.InitiateZoomies();
+        }
+    }
+
     private void FixedUpdate()
     {
         if (displayScore != score)
@@ -285,5 +317,6 @@ public class GameManager : MonoBehaviour
         }
 
         scoreText.text = displayScore.ToString();
+        levelText.text = "LEVEL " + levelUnlocked.ToString();
     }
 }

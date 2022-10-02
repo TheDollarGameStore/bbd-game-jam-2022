@@ -20,9 +20,14 @@ public class StarsManager : MonoBehaviour
         ps = GetComponent<ParticleSystem>();
         main = ps.main;
         main.simulationSpeed = 0;
-        Invoke("StartZoomSound", 1.9f);
-        Invoke("StartZoom", 2.1f);
-        Invoke("ShakeScreen", 2.5f);
+        Invoke("InitiateZoomies", 1.9f);
+    }
+
+    public void InitiateZoomies()
+    {
+        Invoke("StartZoomSound", 0f);
+        Invoke("StartZoom", 0.2f);
+        Invoke("ShakeScreen", 0.6f);
     }
 
     void StartZoomSound()
