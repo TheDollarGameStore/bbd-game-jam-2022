@@ -206,7 +206,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &733652089
 MonoBehaviour:
@@ -307,7 +307,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1539975016
 GameObject:
@@ -436,7 +436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 111202366869387303, guid: 47249f6713b3d41da967b3cc0b4ec42a, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 111202366869387303, guid: 47249f6713b3d41da967b3cc0b4ec42a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -480,6 +480,87 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47249f6713b3d41da967b3cc0b4ec42a, type: 3}
+--- !u!1001 &1670337158
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 199916, guid: 354f0e6c125fb204a98dec076586c711, type: 3}
+      propertyPath: m_Name
+      value: SpiralClockTransitioner
+      objectReference: {fileID: 0}
+    - target: {fileID: 438406, guid: 354f0e6c125fb204a98dec076586c711, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 438406, guid: 354f0e6c125fb204a98dec076586c711, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 438406, guid: 354f0e6c125fb204a98dec076586c711, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 438406, guid: 354f0e6c125fb204a98dec076586c711, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 438406, guid: 354f0e6c125fb204a98dec076586c711, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 438406, guid: 354f0e6c125fb204a98dec076586c711, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 438406, guid: 354f0e6c125fb204a98dec076586c711, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 438406, guid: 354f0e6c125fb204a98dec076586c711, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 438406, guid: 354f0e6c125fb204a98dec076586c711, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 438406, guid: 354f0e6c125fb204a98dec076586c711, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 438406, guid: 354f0e6c125fb204a98dec076586c711, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11427718, guid: 354f0e6c125fb204a98dec076586c711, type: 3}
+      propertyPath: _transitionTime
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 11427718, guid: 354f0e6c125fb204a98dec076586c711, type: 3}
+      propertyPath: _transitionBlockSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 660f419e3c6a00a4d88b7c9ea7f26f7c, type: 3}
+    - target: {fileID: 11427718, guid: 354f0e6c125fb204a98dec076586c711, type: 3}
+      propertyPath: _transitionBlockColor.b
+      value: 0.3018868
+      objectReference: {fileID: 0}
+    - target: {fileID: 11427718, guid: 354f0e6c125fb204a98dec076586c711, type: 3}
+      propertyPath: _transitionBlockColor.g
+      value: 0.3018868
+      objectReference: {fileID: 0}
+    - target: {fileID: 11427718, guid: 354f0e6c125fb204a98dec076586c711, type: 3}
+      propertyPath: _transitionBlockColor.r
+      value: 0.3018868
+      objectReference: {fileID: 0}
+    - target: {fileID: 11427718, guid: 354f0e6c125fb204a98dec076586c711, type: 3}
+      propertyPath: _transitionBlockAnimationTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 354f0e6c125fb204a98dec076586c711, type: 3}
 --- !u!1001 &1882197744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -876,7 +957,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2186313314133278097, guid: ea5b10bf5b7292442aab2d839cc0cf52, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2186313314133278097, guid: ea5b10bf5b7292442aab2d839cc0cf52, type: 3}
       propertyPath: m_LocalPosition.x

@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
         emitters = new List<GameObject>();
         tileSpacing = tileSize / 8f;
         GenerateGrid();
-        Invoke("FillEmitters", 2.175f);
+        Invoke("FillEmitters", 2.675f);
         matchedQueue = new Queue<Lumin>();
         GenerateConnectorGrid();
         validMovesLeft = false;
