@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public int levelUnlocked;
 
-    private readonly int[] scoreNeededToClearLevel = { 1000, 2000, 3000, 4000, 100000 };
+    private readonly int[] scoreNeededToClearLevel = { 5000, 10000, 15000, 20000, 1000000 };
 
     public StarsManager starsManager;
 
@@ -248,7 +249,7 @@ public class GameManager : MonoBehaviour
         {
             SoundManager.Instance.PlayPitched(popSound, Mathf.Min(0.5f + (matchedQueue.Count * 0.1f), 1.5f));
             cameraBehaviour.Shake(10f + matchedQueue.Count);
-            score += matchedQueue.Count * 100; //TODO: make exponential
+            score += (int)Math.Pow(matchedQueue.Count - 2, 2) * 100 + 100;
             while (matchedQueue.Count > 0)
             {
                 Lumin lumin = matchedQueue.Dequeue();
