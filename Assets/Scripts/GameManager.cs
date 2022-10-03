@@ -58,6 +58,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Text levelText;
 
+    [SerializeField] private GameObject gameOverObject;
+
+    private bool gameOver = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -151,6 +155,11 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (introPlaying)
+        {
+            return;
+        }
+
+        if (gameOver)
         {
             return;
         }
@@ -275,6 +284,43 @@ public class GameManager : MonoBehaviour
 
         //If it reaches here, it means game over
         Debug.Log("You Lose");
+        TriggerGameOver();
+    }
+
+    private void TriggerGameOver()
+    {
+        gameOver = true;
+        foreach (GameObject em in emitters)
+        {
+            Destroy(em);
+        }
+        for (int y = 0; y < gridHeight; y++)
+        {
+            for (int x = 0; x < gridWidth; x++)
+            {
+                if (tiles[y, x].lumin != null)
+                {
+                    Destroy(tiles[y, x].lumin.gameObject);
+                }
+                Destroy(tiles[y, x].gameObject);
+            }
+        }
+        for (int y = 0; y < gridHeight - 1; y++)
+        {
+            for (int x = 0; x < gridWidth; x++)
+            {
+                Destroy(verticalConnectors[y, x].gameObject);              
+            }
+        }
+        for (int y = 0; y < gridHeight; y++)
+        {
+            for (int x = 0; x < gridWidth - 1; x++)
+            {
+                Destroy(horizontalConnectors[y, x].gameObject);
+            }
+        }
+        gameOverObject.SetActive(true);
+        starsManager.SlowTime();
     }
 
     private void CheckForScoreReached()
@@ -297,6 +343,23 @@ public class GameManager : MonoBehaviour
             displayScore = 0;
             starsManager.InitiateZoomies();
         }
+    }
+
+    public void RestartLevel()
+    {
+        displayScore = 0;
+        score = 0;
+        starsManager.InitiateZoomies();
+        gameOverObject.SetActive(false);
+        introPlaying = true;
+        emitters = new List<GameObject>();
+        tileSpacing = tileSize / 8f;
+        GenerateGrid();
+        Invoke("FillEmitters", 2.675f);
+        matchedQueue = new Queue<Lumin>();
+        GenerateConnectorGrid();
+        validMovesLeft = false;
+        gameOver = false;
     }
 
     private void FixedUpdate()

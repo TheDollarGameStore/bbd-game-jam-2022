@@ -27,4 +27,9 @@ public class Main : MonoBehaviour
     {
         pauseMenu.SetActive(!pauseMenu.activeSelf);
     }
+
+    public void RestartGame()
+    {
+        GameManager.instance.RestartLevel();
+    }
 }

@@ -61,4 +61,11 @@ public class StarsManager : MonoBehaviour
     {
         zooming = false;
     }
+
+    public void SlowTime()
+    {
+        Invoke("ShakeScreen", 0.2f);
+        main.simulationSpeed = 0.3f;
+        moving = false;
+    }
 }
