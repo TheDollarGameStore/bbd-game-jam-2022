@@ -345,7 +345,9 @@ public class GameManager : MonoBehaviour
 
         starsManager.SlowTime();
         //Instantiate(explosionGameOverPrefab, Vector3.zero, Quaternion.identity);
+        Debug.Log("ACTIVE");
         explosionThingy.SetActive(true);
+        explosionThingy.GetComponent<Transition>().alpha = 1f;
         Invoke("ShakeGameOverScreen", 0.5f);
         Invoke("ShowGameOverScreen", 2.5f);
     }

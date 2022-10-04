@@ -17,7 +17,7 @@ public class Transition : MonoBehaviour
 
     private Image img;
 
-    private float alpha;
+    [HideInInspector] public float alpha;
 
     [SerializeField] private bool isExplosion;
 
@@ -25,6 +25,7 @@ public class Transition : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(fadeIn);
         bg.SetActive(false);
         //sr = GetComponent<SpriteRenderer>();
         img = GetComponent<Image>();
@@ -50,14 +51,11 @@ public class Transition : MonoBehaviour
 
             if (alpha >= 1f)
             {
-
-                Debug.Log("LOAD");
                 SceneManager.LoadScene(targetScene);
                 if (!isExplosion)
                 {
                     bg.SetActive(true);
                 }
-                gameObject.SetActive(false);
             }
         }
         else
@@ -66,8 +64,14 @@ public class Transition : MonoBehaviour
 
             if (alpha <= 0f)
             {
-                Debug.Log("active false");
-                gameObject.SetActive(false);
+                if (!isExplosion)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    gameObject.SetActive(false);
+                }
             }
         }
 

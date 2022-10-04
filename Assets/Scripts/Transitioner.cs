@@ -25,6 +25,7 @@ public class Transitioner : MonoBehaviour
     {
         if (GameObject.FindGameObjectsWithTag("Transition").Length == 0)
         {
+            Debug.Log("are you instantiating");
             Transition component = Instantiate(transition, Vector3.zero, Quaternion.identity).GetComponentInChildren<Transition>();
 
             component.fadeIn = true;
