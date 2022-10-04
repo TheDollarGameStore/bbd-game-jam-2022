@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Transition : MonoBehaviour
 {
@@ -14,13 +15,19 @@ public class Transition : MonoBehaviour
 
     private SpriteRenderer sr;
 
+    private Image img;
+
     private float alpha;
 
     [SerializeField] private bool isExplosion;
 
+    [SerializeField] private GameObject bg;
+
     private void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
+        bg.SetActive(false);
+        //sr = GetComponent<SpriteRenderer>();
+        img = GetComponent<Image>();
 
         if (fadeIn)
         {
@@ -43,7 +50,14 @@ public class Transition : MonoBehaviour
 
             if (alpha >= 1f)
             {
+
+                Debug.Log("LOAD");
                 SceneManager.LoadScene(targetScene);
+                if (!isExplosion)
+                {
+                    bg.SetActive(true);
+                }
+                gameObject.SetActive(false);
             }
         }
         else
@@ -52,10 +66,12 @@ public class Transition : MonoBehaviour
 
             if (alpha <= 0f)
             {
-                Destroy(gameObject);
+                Debug.Log("active false");
+                gameObject.SetActive(false);
             }
         }
 
-        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, alpha);
+        //sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, alpha);
+        img.color = new Color(img.color.r, img.color.g, img.color.b, alpha);
     }
 }

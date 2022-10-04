@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject explosionGameOverPrefab;
 
+    [SerializeField] private GameObject explosionThingy;
+
     [SerializeField] private AudioClip gameOverSound;
 
     private int score;
@@ -342,7 +344,8 @@ public class GameManager : MonoBehaviour
         }
 
         starsManager.SlowTime();
-        Instantiate(explosionGameOverPrefab, Vector3.zero, Quaternion.identity);
+        //Instantiate(explosionGameOverPrefab, Vector3.zero, Quaternion.identity);
+        explosionThingy.SetActive(true);
         Invoke("ShakeGameOverScreen", 0.5f);
         Invoke("ShowGameOverScreen", 2.5f);
     }
