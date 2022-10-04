@@ -394,6 +394,7 @@ public class GameManager : MonoBehaviour
         displayScore = 0;
         score = 0;
         starsManager.InitiateZoomies();
+        gameOverObject.GetComponent<GameOverUI>().Reset();
         gameOverObject.SetActive(false);
         introPlaying = true;
         emitters = new List<GameObject>();
