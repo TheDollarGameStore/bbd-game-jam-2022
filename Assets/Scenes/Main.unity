@@ -6003,7 +6003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f45ec72646928345abbf57c3feaee3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumMatch: 3
+  minimumMatch: 10
   tilePrefab: {fileID: 1283843928757243407, guid: b26b89487613864478b3dad3aa62466e, type: 3}
   emitterPrefab: {fileID: 6919546837782207544, guid: b78d472850300b947a0752c7fd20530d, type: 3}
   connectorPrefab: {fileID: 577355052815432178, guid: f81abed0678224a9ca01d51c0691b3b9, type: 3}
@@ -6014,6 +6014,8 @@ MonoBehaviour:
   cameraBehaviour: {fileID: 519420033}
   popSound: {fileID: 8300000, guid: 17afdd71e70dc304bab1e25327b4b5bb, type: 3}
   scoreText: {fileID: 1427147022}
+  explosionGameOverPrefab: {fileID: 9211150984753219092, guid: c9cc8eea352b7c74db24a76909b20ea6, type: 3}
+  gameOverSound: {fileID: 8300000, guid: fbd4181132db15e4e810b92202405191, type: 3}
   levelUnlocked: 0
   starsManager: {fileID: 930291950}
   levelText: {fileID: 743076815}
@@ -6418,6 +6420,10 @@ PrefabInstance:
     - target: {fileID: 3271909836131463591, guid: dc3acbb0bd0e64c23ba4810fff5ae7de, type: 3}
       propertyPath: m_Name
       value: GameOverSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 3271909836131463591, guid: dc3acbb0bd0e64c23ba4810fff5ae7de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8737544129350266173, guid: dc3acbb0bd0e64c23ba4810fff5ae7de, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

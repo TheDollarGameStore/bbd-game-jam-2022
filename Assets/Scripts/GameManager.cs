@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Text scoreText;
 
+    [SerializeField] private GameObject explosionGameOverPrefab;
+
+    [SerializeField] private AudioClip gameOverSound;
+
     private int score;
 
     private int displayScore;
@@ -301,6 +305,12 @@ public class GameManager : MonoBehaviour
     private void TriggerGameOver()
     {
         gameOver = true;
+        Invoke("GameOverEffects", 1.5f);
+        SoundManager.Instance.PlayPitched(gameOverSound, 1f);
+    }
+
+    private void GameOverEffects()
+    {
         foreach (GameObject em in emitters)
         {
             Destroy(em);
@@ -320,7 +330,7 @@ public class GameManager : MonoBehaviour
         {
             for (int x = 0; x < gridWidth; x++)
             {
-                Destroy(verticalConnectors[y, x].gameObject);              
+                Destroy(verticalConnectors[y, x].gameObject);
             }
         }
         for (int y = 0; y < gridHeight; y++)
@@ -330,8 +340,21 @@ public class GameManager : MonoBehaviour
                 Destroy(horizontalConnectors[y, x].gameObject);
             }
         }
-        gameOverObject.SetActive(true);
+
         starsManager.SlowTime();
+        Instantiate(explosionGameOverPrefab, Vector3.zero, Quaternion.identity);
+        Invoke("ShakeGameOverScreen", 0.5f);
+        Invoke("ShowGameOverScreen", 2.5f);
+    }
+
+    private void ShakeGameOverScreen()
+    {
+        cameraBehaviour.Shake(60f);
+    }
+
+    private void ShowGameOverScreen()
+    {
+        gameOverObject.SetActive(true);
     }
 
     private void CheckForScoreReached()

@@ -10,9 +10,13 @@ public class Transition : MonoBehaviour
 
     [HideInInspector] public bool fadeIn;
 
+    [SerializeField] private AudioClip transitionSound;
+
     private SpriteRenderer sr;
 
     private float alpha;
+
+    [SerializeField] private bool isExplosion;
 
     private void Start()
     {
@@ -21,6 +25,7 @@ public class Transition : MonoBehaviour
         if (fadeIn)
         {
             alpha = 0f;
+            SoundManager.Instance.PlayRandomized(transitionSound);
         }
         else
         {
@@ -43,7 +48,7 @@ public class Transition : MonoBehaviour
         }
         else
         {
-            alpha -= 1f * Time.deltaTime;
+            alpha -= (isExplosion ? 0.5f : 1f) * Time.deltaTime;
 
             if (alpha <= 0f)
             {
