@@ -3,13 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    public void PlayGame()
+    public void Classic()
     {
         Transitioner.instance.TransitionToScene(1);
+        PlayerPrefs.SetString("GameMode", "Classic");
     }
 
-    public void QuitGame()
+    public void Endless()
     {
-        Application.Quit();
+        Transitioner.instance.TransitionToScene(1);
+        PlayerPrefs.SetString("GameMode", "Endless");
     }
 }

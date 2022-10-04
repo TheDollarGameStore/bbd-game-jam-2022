@@ -621,7 +621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 885779581191804061, guid: 5cc2afd3f3d30b245a9204f7f7e8ee4a, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 885779581191804061, guid: 5cc2afd3f3d30b245a9204f7f7e8ee4a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -697,7 +697,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2301186269667648564, guid: 5cc2afd3f3d30b245a9204f7f7e8ee4a, type: 3}
       propertyPath: m_Text
-      value: QUIT
+      value: ENDLESS
       objectReference: {fileID: 0}
     - target: {fileID: 6064614488928318054, guid: 5cc2afd3f3d30b245a9204f7f7e8ee4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -717,7 +717,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6064614488928318054, guid: 5cc2afd3f3d30b245a9204f7f7e8ee4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: QuitGame
+      value: Endless
       objectReference: {fileID: 0}
     - target: {fileID: 6064614488928318054, guid: 5cc2afd3f3d30b245a9204f7f7e8ee4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -940,7 +940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2301186269667648564, guid: 5cc2afd3f3d30b245a9204f7f7e8ee4a, type: 3}
       propertyPath: m_Text
-      value: PLAY
+      value: LEVELS
       objectReference: {fileID: 0}
     - target: {fileID: 6064614488928318054, guid: 5cc2afd3f3d30b245a9204f7f7e8ee4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -960,7 +960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6064614488928318054, guid: 5cc2afd3f3d30b245a9204f7f7e8ee4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayGame
+      value: Classic
       objectReference: {fileID: 0}
     - target: {fileID: 6064614488928318054, guid: 5cc2afd3f3d30b245a9204f7f7e8ee4a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

@@ -58,9 +58,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Text levelText;
 
+
     [SerializeField] private GameObject gameOverObject;
 
     private bool gameOver = false;
+
+    private string gameMode;
 
     private void Awake()
     {
@@ -73,7 +76,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        levelUnlocked = 1;
+        gameMode = PlayerPrefs.GetString("GameMode", "");
+        levelUnlocked = gameMode == "Classic" ? 1 : 4;
         SoundManager.Instance.levelUnlocked = levelUnlocked;
         introPlaying = true;
         emitters = new List<GameObject>();
@@ -83,6 +87,13 @@ public class GameManager : MonoBehaviour
         matchedQueue = new Queue<Lumin>();
         GenerateConnectorGrid();
         validMovesLeft = false;
+
+        if (gameMode == "Endless")
+        {
+            Destroy(levelText.gameObject);
+            scoreText.rectTransform.anchoredPosition = new Vector2(0f, -48f);
+            scoreText.alignment = TextAnchor.MiddleCenter;
+        }
     }
 
     void GenerateGrid()
@@ -325,6 +336,11 @@ public class GameManager : MonoBehaviour
 
     private void CheckForScoreReached()
     {
+        if (gameMode == "Endless")
+        {
+            return;
+        }
+
         if (score >= scoreNeededToClearLevel[levelUnlocked - 1])
         {
             for (int y = 0; y < gridHeight; y++)
