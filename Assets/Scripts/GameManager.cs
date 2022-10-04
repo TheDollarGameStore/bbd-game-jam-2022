@@ -359,6 +359,7 @@ public class GameManager : MonoBehaviour
 
     private void ShowGameOverScreen()
     {
+        gameOverObject.GetComponent<GameOverUI>().Reset();
         gameOverObject.SetActive(true);
     }
 

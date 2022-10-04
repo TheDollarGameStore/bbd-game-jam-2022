@@ -11,12 +11,12 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] private Button b3;
     [SerializeField] private Text txt;
     [SerializeField] private AnimationCurve fadeCurve;
+    [SerializeField] private ColorBlock cb;
     private float timePassed = 0f;
-    private ColorBlock cb;
     // Start is called before the first frame update
     void Start()
     {
-        cb = b1.colors;
+
     }
 
     // Update is called once per frame

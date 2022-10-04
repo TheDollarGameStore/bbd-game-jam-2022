@@ -25,7 +25,6 @@ public class Transition : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(fadeIn);
         bg.SetActive(false);
         //sr = GetComponent<SpriteRenderer>();
         img = GetComponent<Image>();
@@ -38,6 +37,10 @@ public class Transition : MonoBehaviour
         else
         {
             alpha = 1f;
+            if (isExplosion)
+            {
+                SoundManager.Instance.PlayRandomized(transitionSound);
+            }
         }
 
         transform.localScale = Vector3.one * 200f;
@@ -51,9 +54,9 @@ public class Transition : MonoBehaviour
 
             if (alpha >= 1f)
             {
-                SceneManager.LoadScene(targetScene);
                 if (!isExplosion)
                 {
+                    SceneManager.LoadScene(targetScene);
                     bg.SetActive(true);
                 }
             }
