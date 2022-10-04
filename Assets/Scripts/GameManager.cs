@@ -348,7 +348,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("ACTIVE");
         explosionThingy.SetActive(true);
         explosionThingy.GetComponent<Transition>().alpha = 1f;
-        Invoke("ShakeGameOverScreen", 0.5f);
+        explosionThingy.GetComponent<Transition>().ReplaySound();
         Invoke("ShowGameOverScreen", 2.5f);
     }
 

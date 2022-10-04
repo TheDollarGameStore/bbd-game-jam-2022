@@ -37,10 +37,6 @@ public class Transition : MonoBehaviour
         else
         {
             alpha = 1f;
-            if (isExplosion)
-            {
-                SoundManager.Instance.PlayRandomized(transitionSound);
-            }
         }
 
         transform.localScale = Vector3.one * 200f;
@@ -80,5 +76,10 @@ public class Transition : MonoBehaviour
 
         //sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, alpha);
         img.color = new Color(img.color.r, img.color.g, img.color.b, alpha);
+    }
+
+    public void ReplaySound()
+    {
+        SoundManager.Instance.PlayRandomized(transitionSound);
     }
 }
