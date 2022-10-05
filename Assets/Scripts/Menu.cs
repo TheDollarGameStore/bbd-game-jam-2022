@@ -14,4 +14,14 @@ public class Menu : MonoBehaviour
         Transitioner.instance.TransitionToScene(1);
         PlayerPrefs.SetString("GameMode", "Endless");
     }
+
+    public void Tutorial()
+    {
+        Transitioner.instance.TransitionToScene(2);
+    }
+
+    public void Back()
+    {
+        Transitioner.instance.TransitionToScene(0);
+    }
 }
