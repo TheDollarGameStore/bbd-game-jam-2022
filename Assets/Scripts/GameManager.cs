@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private AudioClip gameOverSound;
 
+    [SerializeField] private GameObject successCanvas;
+
     private int score;
 
     private int displayScore;
@@ -396,6 +398,11 @@ public class GameManager : MonoBehaviour
                         tiles[y, x].lumin.Pop();
                     }
                 }
+            }
+
+            if (levelUnlocked > 6)
+            {
+                successCanvas.SetActive(true);
             }
         }
     }
