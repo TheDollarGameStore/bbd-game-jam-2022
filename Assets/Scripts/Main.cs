@@ -26,6 +26,7 @@ public class Main : MonoBehaviour
     public void TogglePause()
     {
         pauseMenu.SetActive(!pauseMenu.activeSelf);
+        GameManager.instance.hasPaused = true;
     }
 
     public void RestartGame()
