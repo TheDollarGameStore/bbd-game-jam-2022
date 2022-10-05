@@ -5866,6 +5866,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb083ae67c8034a98bfd411b3595b38e, type: 3}
+--- !u!1 &1027077252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6786820110913574918, guid: eb083ae67c8034a98bfd411b3595b38e, type: 3}
+  m_PrefabInstance: {fileID: 1027077251}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1142444233
 GameObject:
   m_ObjectHideFlags: 0
@@ -6415,7 +6420,7 @@ MonoBehaviour:
   explosionGameOverPrefab: {fileID: 9211150984753219092, guid: c9cc8eea352b7c74db24a76909b20ea6, type: 3}
   explosionThingy: {fileID: 438019523}
   gameOverSound: {fileID: 8300000, guid: fbd4181132db15e4e810b92202405191, type: 3}
-  successCanvas: {fileID: 0}
+  successCanvas: {fileID: 1027077252}
   levelUnlocked: 0
   starsManager: {fileID: 930291950}
   levelText: {fileID: 743076815}

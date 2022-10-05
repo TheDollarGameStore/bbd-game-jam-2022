@@ -322,6 +322,17 @@ public class GameManager : MonoBehaviour
 
     private void GameOverEffects()
     {
+        DestroyGameboard();
+
+        starsManager.SlowTime();
+        explosionThingy.SetActive(true);
+        explosionThingy.GetComponent<Transition>().alpha = 1f;
+        explosionThingy.GetComponent<Transition>().ReplaySound();
+        Invoke("ShowGameOverScreen", 2.5f);
+    }
+
+    private void DestroyGameboard()
+    {
         foreach (GameObject em in emitters)
         {
             Destroy(em);
@@ -351,14 +362,6 @@ public class GameManager : MonoBehaviour
                 Destroy(horizontalConnectors[y, x].gameObject);
             }
         }
-
-        starsManager.SlowTime();
-        //Instantiate(explosionGameOverPrefab, Vector3.zero, Quaternion.identity);
-        Debug.Log("ACTIVE");
-        explosionThingy.SetActive(true);
-        explosionThingy.GetComponent<Transition>().alpha = 1f;
-        explosionThingy.GetComponent<Transition>().ReplaySound();
-        Invoke("ShowGameOverScreen", 2.5f);
     }
 
     private void ShakeGameOverScreen()
@@ -402,7 +405,10 @@ public class GameManager : MonoBehaviour
 
             if (levelUnlocked > 6)
             {
+                starsManager.SlowTime();
+                DestroyGameboard();
                 successCanvas.SetActive(true);
+                gameOver = true;
             }
         }
     }
@@ -449,8 +455,17 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            levelText.text = "LEVEL " + levelUnlocked.ToString();
-            scoreText.text = displayScore.ToString() + " / " + scoreNeededToClearLevel[levelUnlocked - 1].ToString();
+            
+            if (levelUnlocked < 7)
+            {
+                levelText.text = "LEVEL " + levelUnlocked.ToString();
+                scoreText.text = displayScore.ToString() + " / " + scoreNeededToClearLevel[levelUnlocked - 1].ToString();
+            }
+            else
+            {
+                levelText.text = ":)";
+                scoreText.text = ":)";
+            }
         }
     }
 }
