@@ -403,7 +403,7 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            if (levelUnlocked > 6)
+            if (levelUnlocked >= 6)
             {
                 starsManager.SlowTime();
                 DestroyGameboard();
