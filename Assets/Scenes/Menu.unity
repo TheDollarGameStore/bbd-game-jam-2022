@@ -1353,6 +1353,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5101076818912868421}
     m_Modifications:
+    - target: {fileID: 9099011913980354872, guid: c6b6897479a2f4f5bb6a9598b5935660, type: 3}
+      propertyPath: m_Text
+      value: Tiane Erwee
+      objectReference: {fileID: 0}
     - target: {fileID: 9099011913982889360, guid: c6b6897479a2f4f5bb6a9598b5935660, type: 3}
       propertyPath: m_Name
       value: CreditsPanel
@@ -1440,6 +1444,14 @@ PrefabInstance:
     - target: {fileID: 9099011913982889361, guid: c6b6897479a2f4f5bb6a9598b5935660, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099011915767429299, guid: c6b6897479a2f4f5bb6a9598b5935660, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -220.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099011915767429300, guid: c6b6897479a2f4f5bb6a9598b5935660, type: 3}
+      propertyPath: m_Text
+      value: Claris Richter
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6b6897479a2f4f5bb6a9598b5935660, type: 3}
