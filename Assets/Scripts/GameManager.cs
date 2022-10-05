@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         gameMode = PlayerPrefs.GetString("GameMode", "");
-        levelUnlocked = gameMode == "Classic" ? 1 : 5;
+        levelUnlocked = 1;
         SoundManager.Instance.levelUnlocked = levelUnlocked;
         introPlaying = true;
         emitters = new List<GameObject>();
@@ -365,13 +365,21 @@ public class GameManager : MonoBehaviour
 
     private void CheckForScoreReached()
     {
-        if (gameMode == "Endless")
-        {
-            return;
-        }
 
         if (score >= scoreNeededToClearLevel[levelUnlocked - 1])
         {
+            levelUnlocked++;
+            SoundManager.Instance.levelUnlocked = levelUnlocked;
+
+
+            if (gameMode == "Endless")
+            {
+                return;
+            }
+
+            displayScore = 0;
+            starsManager.InitiateZoomies();
+            score = 0;
             for (int y = 0; y < gridHeight; y++)
             {
                 for (int x = 0; x < gridWidth; x++)
@@ -382,11 +390,6 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-            score = 0;
-            levelUnlocked++;
-            SoundManager.Instance.levelUnlocked = levelUnlocked;
-            displayScore = 0;
-            starsManager.InitiateZoomies();
         }
     }
 

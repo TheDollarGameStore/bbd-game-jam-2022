@@ -8,7 +8,6 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] private Image panel;
     [SerializeField] private Button b1;
     [SerializeField] private Button b2;
-    [SerializeField] private Button b3;
     [SerializeField] private Text txt;
     [SerializeField] private AnimationCurve fadeCurve;
     [SerializeField] private ColorBlock cb;
@@ -29,7 +28,6 @@ public class GameOverUI : MonoBehaviour
             cb.normalColor = new Color(cb.normalColor.r, cb.normalColor.g, cb.normalColor.b, fadeCurve.Evaluate(timePassed));
             b1.colors = cb;
             b2.colors = cb;
-            b3.colors = cb;
             txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, fadeCurve.Evaluate(timePassed));
         }
     }
@@ -41,7 +39,6 @@ public class GameOverUI : MonoBehaviour
         cb.normalColor = new Color(cb.normalColor.r, cb.normalColor.g, cb.normalColor.b, fadeCurve.Evaluate(timePassed));
         b1.colors = cb;
         b2.colors = cb;
-        b3.colors = cb;
         txt.color = new Color(txt.color.r, txt.color.g, txt.color.b, fadeCurve.Evaluate(timePassed));
     }
 }
