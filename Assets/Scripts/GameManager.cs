@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public int levelUnlocked;
 
-    private readonly int[] scoreNeededToClearLevel = { 5000, 10000, 15000, 20000, 1000000 };
+    private readonly int[] scoreNeededToClearLevel = { 5000, 10000, 15000, 20000, 25000, 1000000 };
 
     public StarsManager starsManager;
 
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         gameMode = PlayerPrefs.GetString("GameMode", "");
-        levelUnlocked = gameMode == "Classic" ? 1 : 4;
+        levelUnlocked = gameMode == "Classic" ? 1 : 5;
         SoundManager.Instance.levelUnlocked = levelUnlocked;
         introPlaying = true;
         emitters = new List<GameObject>();

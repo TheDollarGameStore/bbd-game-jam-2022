@@ -4,7 +4,7 @@ public class SoundManager : MonoBehaviour
 {
     [HideInInspector] public int levelUnlocked;
     public float musicVolume;
-    public AudioSource audioSourceLevel1, audioSourceLevel2, audioSourceLevel3, audioSourceLevel4, soundSource;
+    public AudioSource audioSourceLevel1, audioSourceLevel2, audioSourceLevel3, audioSourceLevel4, audioSourceLevel5, soundSource;
     public static SoundManager Instance;
 
     public void Awake()
@@ -22,6 +22,7 @@ public class SoundManager : MonoBehaviour
         audioSourceLevel2.volume = levelUnlocked >= 2 ? musicVolume : 0f;
         audioSourceLevel3.volume = levelUnlocked >= 3 ? musicVolume : 0f;
         audioSourceLevel4.volume = levelUnlocked >= 4 ? musicVolume : 0f;
+        audioSourceLevel5.volume = levelUnlocked >= 5 ? musicVolume : 0f;
     }
 
     public void Update()
@@ -30,6 +31,7 @@ public class SoundManager : MonoBehaviour
         audioSourceLevel2.volume = Mathf.Lerp(audioSourceLevel2.volume, levelUnlocked >= 2 ? musicVolume : 0f, Time.deltaTime);
         audioSourceLevel3.volume = Mathf.Lerp(audioSourceLevel3.volume, levelUnlocked >= 3 ? musicVolume : 0f, Time.deltaTime);
         audioSourceLevel4.volume = Mathf.Lerp(audioSourceLevel4.volume, levelUnlocked >= 4 ? musicVolume : 0f, Time.deltaTime);
+        audioSourceLevel5.volume = Mathf.Lerp(audioSourceLevel5.volume, levelUnlocked >= 5 ? musicVolume : 0f, Time.deltaTime);
     }
 
     public void PlayRandomized(AudioClip clip)
