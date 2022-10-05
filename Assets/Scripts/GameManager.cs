@@ -429,11 +429,14 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        scoreText.text = displayScore.ToString();
         if (gameMode == "Endless")
         {
-            return;
+            scoreText.text = displayScore.ToString();
         }
-        levelText.text = "LEVEL " + levelUnlocked.ToString();
+        else
+        {
+            levelText.text = "LEVEL " + levelUnlocked.ToString();
+            scoreText.text = displayScore.ToString() + " / " + scoreNeededToClearLevel[levelUnlocked - 1].ToString();
+        }
     }
 }
