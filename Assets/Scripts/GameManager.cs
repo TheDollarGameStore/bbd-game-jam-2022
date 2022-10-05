@@ -71,6 +71,8 @@ public class GameManager : MonoBehaviour
 
     private string gameMode;
 
+    [HideInInspector] public bool hasPaused;
+
     private void Awake()
     {
         if (instance == null)
@@ -183,7 +185,7 @@ public class GameManager : MonoBehaviour
 
         ShiftEmitters();
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !hasPaused)
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
@@ -194,6 +196,11 @@ public class GameManager : MonoBehaviour
                     PlaceEmitter(hit.collider.gameObject.GetComponent<Tile>());
                 }
             }
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            hasPaused = false;
         }
     }
 
